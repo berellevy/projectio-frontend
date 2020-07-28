@@ -20,7 +20,11 @@ const cartShow = () => {
  		let cartItemImage = createElem('img', {src: ` ${item.image1}`})
  		let deleteCartItembutton = createElem('button', {textContent: "delete"})
  		let cartItemQuantitySelector = createElem('select')
-
+ 		let cartItemQuantityOption1 = createElem('option', {innerHTML: 1}) 		
+ 		let cartItemQuantityOption2 = createElem('option', {innerHTML: 2}) 		
+ 		let cartItemQuantityOption3 = createElem('option', {innerHTML: 3}) 		
+ 		let cartItemQuantityOption4 = createElem('option', {innerHTML: 4}) 
+ 		cartItemQuantitySelector.append(cartItemQuantityOption1,cartItemQuantityOption2, cartItemQuantityOption3,cartItemQuantityOption4)
  		cartItemDiv.append(cartItemName, cartItemImage, cartItemPrice, cartItemQuantity, cartItemtotalPrice, deleteCartItembutton, cartItemQuantitySelector)
  		main().append(cartItemDiv)
  	} 
