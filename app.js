@@ -1,7 +1,14 @@
 document.addEventListener('DOMContentLoaded', (e) => {
+  const main = () => document.querySelector('main');
+  const homeButton = document.querySelector('#index-page')
 		homeButton.addEventListener('click', e => {
-			loadIndexPage()
-		})	
+      destroyCurrentPage()
+      loadIndexPage()
+    })	
+    
+    const destroyCurrentPage = () => {
+      main().firstElementChild.remove()
+    }
     
     loadIndexPage()
 

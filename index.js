@@ -35,15 +35,16 @@ const loadIndexPage = () => {
 		})
 	}
 
+	const destroyIndexPage = () => {
+		const indexDiv = document.querySelector('#index');
+		indexDiv.remove()
+	}
+
 	indexPage()
 	goToItem()
 }
 
 
-const destroyIndexPage = () => {
-	const indexDiv = document.querySelector('#index');
-	indexDiv.remove()
-}
 
 		// const itemCard = document.createElement('div')
 		// itemCard.className = 'item-card'
