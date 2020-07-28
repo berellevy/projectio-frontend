@@ -1,7 +1,7 @@
 baseUrl = 'http://localhost:3000'
 itemsUrl = baseUrl+'/items'
 cartsUrl = baseUrl+'/carts'
-currentCartUrl = cartsUrl+'/27'
+currentCartUrl = cartsUrl+'/31'
 
 
 const main = () =>  document.querySelector('main');

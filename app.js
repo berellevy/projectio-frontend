@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', (e) => {
   const main = () => document.querySelector('main');
   const homeButton = document.querySelector('#index-page')
-		homeButton.addEventListener('click', e => {
+  const cartButton = document.querySelector('#cart-page')
+	
+  	homeButton.addEventListener('click', e => {
       destroyCurrentPage()
       loadIndexPage()
     })	
+
+    cartButton.addEventListener('click', e => {
+      destroyCurrentPage()
+      cartShow()
+    })
     
     const destroyCurrentPage = () => {
-      main().firstElementChild.remove()
+      main().querySelectorAll('*').forEach(n => n.remove());
+
     }
     
     loadIndexPage()
@@ -18,3 +26,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // destroyIndexPage()
     // itemShow(101)
 })
+
