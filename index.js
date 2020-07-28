@@ -4,7 +4,7 @@
 const loadIndexPage = () => {
 	const indexDiv = document.createElement('div');
 	indexDiv.id = 'index'
-	main.append(indexDiv)
+	main().append(indexDiv)
 
 	const indexPage = () => {
 		fetch(`${baseUrl}/items`)
@@ -24,24 +24,7 @@ const loadIndexPage = () => {
 		indexDiv.append(itemCard)
 	}
 
-	const goToItem = () => {
-		document.addEventListener('click', event => {
-			// console.dir(event)
-			const itemCard = event.target.closest('.item-card')
-			if (itemCard) {
-				destroyIndexPage()
-				itemShow(itemCard.dataset.itemId)
-			}
-		})
-	}
-
-	const destroyIndexPage = () => {
-		const indexDiv = document.querySelector('#index');
-		indexDiv.remove()
-	}
-
 	indexPage()
-	goToItem()
 }
 
 
