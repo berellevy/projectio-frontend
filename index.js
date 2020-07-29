@@ -11,18 +11,22 @@ const loadIndexPage = () => {
 		.then(items => renderItems(items))
 	}
 	
-	const createBootstrapRow = () => createElem('div', {className: 'row'})
+	const createBootstrapRow = () => createElem('div', {className: 'row index-row'})
 	
 	const createItemCard = (itemData) => {
 		const itemCard = createElem('div', {className: 'item-card col col-sm-3'}, {itemId: itemData.id})
+		const imageDiv = createElem('div', {className: 'image-div'})
+		const cardContentDiv = createElem('div', {className: 'card-content'})
 		const image1 = createElem('img', {src: itemData.image1})
+		imageDiv.append(image1)
 		const itemName = createElem('h4', {textContent: itemData.name})
 		const price = createElem('div', {className: "item-price", textContent: `$${itemData.price}`})
-		itemCard.append(
-			image1,
+		cardContentDiv.append(
+			imageDiv,
 			itemName,
 			price
 		)
+		itemCard.append(cardContentDiv)
 		return itemCard
 	}
 	
