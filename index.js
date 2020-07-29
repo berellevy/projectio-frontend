@@ -27,13 +27,18 @@ const loadIndexPage = () => {
 	}
 	
 	const renderItems = (items) => {
-		const bootstrapRow = createBootstrapRow()
+		let bootstrapRow = createBootstrapRow()
+		indexDiv.append(bootstrapRow)
+		counter = 0
 		items.forEach(item => {
-			counter = 1
+			if (counter % 4 === 0) {
+				bootstrapRow = createBootstrapRow()
+				indexDiv.append(bootstrapRow)
+			}
 			itemCard = createItemCard(item)
 			bootstrapRow.append(itemCard)
+			counter ++
 		})
-		indexDiv.append(bootstrapRow)
 	}
 	
 	
