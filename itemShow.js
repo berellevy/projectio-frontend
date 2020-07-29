@@ -5,14 +5,20 @@ const itemShow = (id) => {
 }  
 
 const renderItem = (item) => {
-	let itemDiv = createElem('div', {className: 'item-show-card'}, {itemId: item.id})
-	let itemName = createElem('h1', {textContent: item.name})
+	let itemDiv = createElem('div', {className: 'container show-item-container'}, {itemId: item.id})
+	let itemContent = createElem('div', {className: 'row'})
 	let itemImage1 = createElem('img', {src: item.image1})
+	let imageColumn = createElem('div', {className: 'col col-sm-8'})
+	imageColumn.append(itemImage1)
+	let itemName = createElem('h1', {textContent: item.name})
 	let itemImage2 = createElem('img', {src: item.image2})
 	let itemDescription = createElem('p', {textContent: item.description})
 	let itemPrice = createElem('p', {textContent: `$${item.price}`})
-	let addToCart = createElem('button', {textContent: "Add To Cart", id: "add-to-cart"})
-	itemDiv.append(itemName, itemImage1, itemPrice,itemDescription, addToCart)
+	let addToCart = createElem('button', {textContent: "Add To Cart", className: "btn btn-secondary btn-lg", id: "add-to-cart"})
+	let infoColumn = createElem('div', {className: "col col-sm-4"})
+	infoColumn.append(itemName, itemPrice,itemDescription, addToCart)
+	itemContent.append(imageColumn, infoColumn )
+	itemDiv.append(itemContent)
 	// itemDiv.append(itemImage2)
 	main().append(itemDiv)
 
@@ -23,7 +29,7 @@ const addToCartHandler = () => {
 	document.addEventListener('click', (e) => {
 		target = e.target
 		if (target.id === 'add-to-cart') {
-			itemId = target.closest('.item-show-card').dataset.itemId
+			itemId = target.closest('.show-item-container').dataset.itemId
 			addItemToCart(itemId)
 			
 		}

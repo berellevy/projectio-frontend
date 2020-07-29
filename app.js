@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     loadIndexPage()
     goToItemHandler()
     addToCartHandler()
+    deleteItemFromCartHandler()
 
 
     // destroyIndexPage()

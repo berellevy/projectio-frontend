@@ -5,6 +5,7 @@ const loadIndexPage = () => {
 	const indexDiv = createElem('div', {id: "index", className: 'container'})
 	main().append(indexDiv)
 
+
 	const indexPage = () => {
 		fetch(`${baseUrl}/items`)
 		.then(resp => resp.json())
@@ -30,7 +31,12 @@ const loadIndexPage = () => {
 		return itemCard
 	}
 	
+	const resultsQuantity = (num) => createElem("h3", {textContent: `Showing ${num} Items`})
+
 	const renderItems = (items) => {
+		const qtyHeader = resultsQuantity(items.length)
+		console.log(qtyHeader);
+		indexDiv.prepend(qtyHeader)
 		let bootstrapRow = createBootstrapRow()
 		indexDiv.append(bootstrapRow)
 		counter = 0
