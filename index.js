@@ -2,8 +2,7 @@
 
 
 const loadIndexPage = () => {
-	const indexDiv = document.createElement('div');
-	indexDiv.id = 'index'
+	const indexDiv = createElem('div', {id: "index", className: 'container'})
 	main().append(indexDiv)
 
 	const indexPage = () => {
@@ -12,17 +11,32 @@ const loadIndexPage = () => {
 		.then(items => renderItems(items))
 	}
 	
+	const createBootstrapRow = () => createElem('div', {className: 'row'})
+	
+	const createItemCard = (itemData) => {
+		const itemCard = createElem('div', {className: 'item-card col col-sm-3'}, {itemId: itemData.id})
+		const image1 = createElem('img', {src: itemData.image1})
+		const itemName = createElem('h4', {textContent: itemData.name})
+		const price = createElem('div', {className: "item-price", textContent: `$${itemData.price}`})
+		itemCard.append(
+			image1,
+			itemName,
+			price
+		)
+		return itemCard
+	}
 	
 	const renderItems = (items) => {
-		items.forEach(item => renderItem(item))
+		const bootstrapRow = createBootstrapRow()
+		items.forEach(item => {
+			counter = 1
+			itemCard = createItemCard(item)
+			bootstrapRow.append(itemCard)
+		})
+		indexDiv.append(bootstrapRow)
 	}
 	
-	const renderItem = (item) => {
-		const itemCard = createElem('div', {className: 'item-card'}, {itemId: item.id})
-		const itemName = createElem('h1', {textContent: item.name})
-		itemCard.append(itemName)
-		indexDiv.append(itemCard)
-	}
+	
 
 	indexPage()
 }
