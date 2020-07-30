@@ -40,6 +40,9 @@ img {
 	margin-bottom: 3%;
 }
 
+
+
+
 .show-item-container {
 	margin-top: 6em;
 }
@@ -70,3 +73,39 @@ div.totals-row.subtotal {
 span.number {
 	float: right;
 }
+
+a#cart-page {
+	float: right;
+}
+
+a#index-page {
+	float: right;
+}
+
+ul.right-nav{
+	float: right;
+}
+
+.nav-padding{
+	padding-left: 8%;
+	padding-right: 5%;
+}
+
+ul.center-search{
+	width: 50%;
+	text-align: center;
+
+}
+
+.center-search li {
+	margin: 0 auto;
+/**/	padding-left: 50%;
+
+}
+
+
+
+
+
+
+
