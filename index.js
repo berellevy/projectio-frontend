@@ -37,7 +37,6 @@ const loadIndexPage = () => {
 
 	const renderItems = (items) => {
 		const qtyHeader = resultsQuantity(items.length)
-		console.log(qtyHeader);
 		indexDiv.prepend(qtyHeader)
 		let bootstrapRow = createBootstrapRow()
 		indexDiv.append(bootstrapRow)

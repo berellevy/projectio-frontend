@@ -9,6 +9,7 @@ const cartShow = () => {
 	})
 }
 
+	const checkoutButtonRow = createElem("button", {textContent: "Checkout", className: "row btn btn-secondary btn-lg checkout-button"} )
 
 
 const totalsRow = (word, number, id, extraClass = "") => {
@@ -21,11 +22,10 @@ const totalsRow = (word, number, id, extraClass = "") => {
 
 const renderCartTotals = (totalsObj) => {
 	totalsCol = getTotalscolumn()
-	console.log(totalsObj);
 	const priceRow = totalsRow("Total:", totalsObj.total, "total")
 	const taxRow = totalsRow("Taxes & Fees:", totalsObj.tax, "taxes")
 	const subtotalRow = totalsRow("SUBTOTAL:", totalsObj.total_with_tax, "subtotal", "subtotal")
-	totalsCol.append(priceRow, taxRow, subtotalRow)
+	totalsCol.append(priceRow, taxRow, subtotalRow,checkoutButtonRow)
 }
 
 
@@ -115,9 +115,20 @@ const getCartQty = () => {
 	fetch(currentCartUrl+'/item_qty')
 	.then(response => response.json())
 	.then(data => {
-		console.log(data)
 		updateCartQty(data)
 	})
 	.catch(error => console.log(error))
 		
 }
+
+checkoutButtonRow.addEventListener('click', e => {
+	checkoutButtonRow.classList.add('spinning');
+	checkoutButtonRow.innerHTML = ""
+	setTimeout(function(){
+		destroyCurrentPage()
+		loadConfirmationPage()
+	}, 6000)
+	
+})
+
+
