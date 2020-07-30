@@ -47,8 +47,20 @@ const addItemToCart = (id) => {
 		body: JSON.stringify(patchData)
 	})
 	.then(response => response.json())
-	.then(data => {console.log(data)})
+	.then(data => {
+		console.log(data)
+		updateCartQty(data)
+	})
 	.catch(error => console.log(error))
+}
+
+const updateCartQty = (qty) => {
+	qtySpan = document.querySelector('a#cart-page span')
+	if (qty > 0) {
+		qtySpan.textContent = qty
+	} else {
+		qtySpan.textContent = ""
+	}
 }
 
 

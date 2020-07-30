@@ -9,7 +9,9 @@ const loadIndexPage = () => {
 	const indexPage = () => {
 		fetch(`${baseUrl}/items`)
 		.then(resp => resp.json())
-		.then(items => renderItems(items))
+		.then(data => {
+			renderItems(data.items)
+		})
 	}
 	
 	const createBootstrapRow = () => createElem('div', {className: 'row index-row'})

@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
     
     loadIndexPage()
+    getCartQty()
     goToItemHandler()
     addToCartHandler()
     deleteItemFromCartHandler()

@@ -11,8 +11,8 @@ const cartShow = () => {
 
 
 
-const totalsRow = (word, number, extraClass = "") => {
-	const row = createElem('div', {className: `row totals-row ${extraClass}`})
+const totalsRow = (word, number, id, extraClass = "") => {
+	const row = createElem('div', {className: `row totals-row ${extraClass}`, id: id})
 	const wordSpan = createElem('span', {className: 'word', textContent: word})
 	const numberSpan = createElem('span', {className: 'number', textContent: `$${number}`})
 	row.append(wordSpan, numberSpan)
@@ -21,9 +21,10 @@ const totalsRow = (word, number, extraClass = "") => {
 
 const renderCartTotals = (totalsObj) => {
 	totalsCol = getTotalscolumn()
-	const priceRow = totalsRow("Price:", totalsObj.total)
-	const taxRow = totalsRow("Taxes & Fees:", totalsObj.tax)
-	const subtotalRow = totalsRow("SUBTOTAL:", totalsObj.tax, "subtotal")
+	console.log(totalsObj);
+	const priceRow = totalsRow("Total:", totalsObj.total, "total")
+	const taxRow = totalsRow("Taxes & Fees:", totalsObj.tax, "taxes")
+	const subtotalRow = totalsRow("SUBTOTAL:", totalsObj.total_with_tax, "subtotal", "subtotal")
 	totalsCol.append(priceRow, taxRow, subtotalRow)
 }
 
@@ -65,7 +66,7 @@ const renderCartItems = (items) => {
 		let priceCol = createElem("div", {className: "col col-sm-2 cart-row-text"})
 		priceCol.append(cartItemPrice)
 		
-		let deleteButton = createElem("button", {innerText: "x", className: 'bi bi-x delete-cart-item'})
+		let deleteButton = createElem("button", {textContent: "x", className: 'bi bi-x delete-cart-item'})
 		let deleteCol = createElem("div", {className: "col col-sm-1"})
 		deleteCol.append(deleteButton)
 
@@ -87,9 +88,36 @@ const deleteCartItem = (id) => {
 	})
 	.then(response => response.json())
 	.then(data => {
-		console.log(data)
-		destroyCurrentPage()
-		cartShow()
+		removeCartItem(data.deleted_item)
+		updateCartTotals(data.cart_totals)
 	})
 	.catch(error => console.log(error))
+}
+
+const updateCartTotals = (cartTotals) => {
+	total = document.querySelector("#total span.number")
+	taxes = document.querySelector("#taxes span.number")
+	subtotal = document.querySelector("#subtotal span.number")
+	total.textContent = `$${cartTotals.total}`
+	taxes.textContent = `$${cartTotals.tax}`
+	subtotal.textContent = `$${cartTotals.total_with_tax}`
+}
+
+const getCartItem = (id) => document.querySelector(`div[data-id="${id}"]`)
+
+const removeCartItem = (id) => {
+	cartItem = getCartItem(id)
+	cartItem.remove()
+	getCartQty()
+}
+
+const getCartQty = () => {
+	fetch(currentCartUrl+'/item_qty')
+	.then(response => response.json())
+	.then(data => {
+		console.log(data)
+		updateCartQty(data)
+	})
+	.catch(error => console.log(error))
+		
 }
