@@ -1,12 +1,15 @@
 baseUrl = 'http://localhost:3000'
 itemsUrl = baseUrl+'/items'
 cartsUrl = baseUrl+'/carts'
-currentCartUrl = cartsUrl+'/51'
+currentCartUrl = cartsUrl+'/41'
+searchUrl = baseUrl + '/search/'
 
 
 const main = () =>  document.querySelector('main');
 const homeButton = () => document.querySelector('#index-page')
 const addToCartButton = () => document.querySelector('#add-to-cart');
+const navSearchButton = () => document.querySelector('ul.center-search button')
+const navSearchInput = () => document.querySelector('ul.center-search input')
 
 
 let createElem = (tag, args, data) => {

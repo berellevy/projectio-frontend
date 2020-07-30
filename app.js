@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     goToItemHandler()
     addToCartHandler()
     deleteItemFromCartHandler()
+    addSearchButtonHandler()
 
 
     // destroyIndexPage()
