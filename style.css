@@ -12,10 +12,26 @@ img {
 
 .card-content{
 	text-align: center;
-	height: 400px;
-	border-bottom: 2px solid lightgrey;
+	height: 300px;
+	border-bottom: 3px solid lightgrey;
 /*	background-color: red;
 */
+}
+
+.card-content img:hover{
+	border: 1px solid grey;
+}
+
+.card-content h4:hover{
+	color: grey;
+}
+.card-content h5:hover{
+	color: grey;
+
+}
+
+.card-content:hover{
+	cursor: pointer;
 }
 
 
@@ -44,8 +60,10 @@ img {
 
 
 .show-item-container {
-	margin-top: 6em;
+	padding: 10%;
 }
+
+
 
 .cart-show-card {
 	margin-bottom: 1em;
@@ -142,3 +160,14 @@ margin: 0 auto;
         height: 1rem;
         border-width: .2em;
     }
+/*
+    button.add-to-cart-button:hover{
+    	background-color: red;
+    	width: 10%;
+    }
+*/
+
+.delete-cart-item{
+	background-color: white;
+	border: none;
+}

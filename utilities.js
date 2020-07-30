@@ -1,7 +1,7 @@
 baseUrl = 'http://localhost:3000'
 itemsUrl = baseUrl+'/items'
 cartsUrl = baseUrl+'/carts'
-currentCartUrl = cartsUrl+'/51'
+currentCartUrl = cartsUrl+'/70'
 
 
 const main = () =>  document.querySelector('main');
@@ -35,6 +35,17 @@ const goToItemHandler = () => {
     })
 }
 
+// const deleteItemFromCartHandler = () => {
+//     document.addEventListener('click', event => {
+//         if (event.target.classList.contains("delete-cart-item")) {
+//             const cartShowCard = event.target.closest('.cart-show-card')
+//             const itemId = cartShowCard.dataset.id
+//             deleteCartItem(itemId)
+//         }
+//     })
+// }
+
+
 const deleteItemFromCartHandler = () => {
     document.addEventListener('click', event => {
         if (event.target.classList.contains("delete-cart-item")) {
@@ -44,4 +55,5 @@ const deleteItemFromCartHandler = () => {
         }
     })
 }
+
 

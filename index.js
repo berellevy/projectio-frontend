@@ -23,7 +23,7 @@ const loadIndexPage = () => {
 		const image1 = createElem('img', {src: itemData.image1})
 		imageDiv.append(image1)
 		const itemName = createElem('h4', {textContent: itemData.name})
-		const price = createElem('div', {className: "item-price", textContent: `$${itemData.price}`})
+		const price = createElem('h5', {className: "item-price", textContent: `$${itemData.price}`})
 		cardContentDiv.append(
 			imageDiv,
 			itemName,
