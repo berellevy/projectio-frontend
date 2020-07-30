@@ -2,8 +2,13 @@
 
 
 const loadIndexPage = () => {
-	const indexDiv = createElem('div', {id: "index", className: 'container'})
-	main().append(indexDiv)
+	
+	
+	
+
+	indexPage()
+}
+
 
 
 	const indexPage = () => {
@@ -36,8 +41,9 @@ const loadIndexPage = () => {
 	const resultsQuantity = (num) => createElem("h3", {textContent: `Showing ${num} Items`})
 
 	const renderItems = (items) => {
+		const indexDiv = createElem('div', {id: "index", className: 'container'})
+	 	main().append(indexDiv)
 		const qtyHeader = resultsQuantity(items.length)
-		console.log(qtyHeader);
 		indexDiv.prepend(qtyHeader)
 		let bootstrapRow = createBootstrapRow()
 		indexDiv.append(bootstrapRow)
@@ -52,19 +58,7 @@ const loadIndexPage = () => {
 			counter ++
 		})
 	}
+
+
+
 	
-	
-
-	indexPage()
-}
-
-
-
-		// const itemCard = document.createElement('div')
-		// itemCard.className = 'item-card'
-		// const itemName = document.createElement('h1')
-		// itemName.textContent = `${item.name}`
-		// const image1 = document.createElement('img')
-		// image1.src = `${item.image1}`
-		// itemCard.append(itemName, image1)
-		// indexDiv.append(itemCard)

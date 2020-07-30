@@ -9,7 +9,10 @@ const searchButtonOnClick = (e) => {
      if (input !== "") {
          fetch(searchUrl + input)
          .then(response => response.json())
-         .then(data => {console.log(data)})
+         .then(data => {
+             destroyCurrentPage()
+             renderItems(data)
+         })
          .catch(error => console.log(error))
          
      }
