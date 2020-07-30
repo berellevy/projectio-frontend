@@ -122,12 +122,23 @@ const getCartQty = () => {
 }
 
 checkoutButtonRow.addEventListener('click', e => {
-	checkoutButtonRow.classList.add('spinning');
+	
 	checkoutButtonRow.innerHTML = ""
+	checkoutButtonRow.style.backgroundColor = "white"
+
+	const spinnerBorder = createElem('div')
+	spinnerBorder.className ="spinner-border spinner-border-lg"
+	spinnerBorder.innerHTML = `<span role="status"></span>`
+	// const spinnerSpan = createElem('span', {className: "sr-only", innerHTML:`Loading...`})
+	checkoutButtonRow.append(spinnerBorder)
+
+
+
 	setTimeout(function(){
 		destroyCurrentPage()
 		loadConfirmationPage()
-	}, 6000)
+		checkoutButtonRow.prepend
+	}, 2200)
 	
 })
 
