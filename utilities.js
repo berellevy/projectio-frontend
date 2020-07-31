@@ -51,6 +51,7 @@ const goToItemHandler = () => {
 
 const deleteItemFromCartHandler = () => {
     document.addEventListener('click', event => {
+        // console.log(event.target)
         if (event.target.classList.contains("delete-cart-item")) {
             const cartShowCard = event.target.closest('.cart-show-card')
             const itemId = cartShowCard.dataset.id
