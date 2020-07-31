@@ -9,7 +9,8 @@ const cartShow = () => {
 	})
 }
 
-
+	const makeCheckoutButtonRow = () => createElem("button", {textContent: "Checkout", className: "row btn btn-secondary btn-lg checkout-button"} )
+	const getCheckoutButtonRow = () => document.querySelector('checkout-button');
 
 const totalsRow = (word, number, id, extraClass = "") => {
 	const row = createElem('div', {className: `row totals-row ${extraClass}`, id: id})
@@ -21,11 +22,10 @@ const totalsRow = (word, number, id, extraClass = "") => {
 
 const renderCartTotals = (totalsObj) => {
 	totalsCol = getTotalscolumn()
-	console.log(totalsObj);
 	const priceRow = totalsRow("Total:", totalsObj.total, "total")
 	const taxRow = totalsRow("Taxes & Fees:", totalsObj.tax, "taxes")
 	const subtotalRow = totalsRow("SUBTOTAL:", totalsObj.total_with_tax, "subtotal", "subtotal")
-	totalsCol.append(priceRow, taxRow, subtotalRow)
+	totalsCol.append(priceRow, taxRow, subtotalRow,makeCheckoutButtonRow())
 }
 
 
@@ -66,7 +66,9 @@ const renderCartItems = (items) => {
 		let priceCol = createElem("div", {className: "col col-sm-2 cart-row-text"})
 		priceCol.append(cartItemPrice)
 		
-		let deleteButton = createElem("button", {textContent: "x", className: 'bi bi-x delete-cart-item'})
+		let deleteButton = createElem("button", {innerHTML: `<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  		<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.146-3.146a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"/>
+		</svg>`, className: 'bi bi-x delete-cart-item'})
 		let deleteCol = createElem("div", {className: "col col-sm-1"})
 		deleteCol.append(deleteButton)
 
@@ -115,9 +117,35 @@ const getCartQty = () => {
 	fetch(currentCartUrl+'/item_qty')
 	.then(response => response.json())
 	.then(data => {
-		console.log(data)
 		updateCartQty(data)
 	})
 	.catch(error => console.log(error))
 		
 }
+
+document.addEventListener('click', e => {
+	const t = e.target
+	if (t.classList.contains('checkout-button')) {
+		console.log(t);
+		
+		t.innerHTML = ""
+		t.style.backgroundColor = "white"
+		
+		const spinnerBorder = createElem('div')
+		spinnerBorder.className ="spinner-border spinner-border-lg"
+		spinnerBorder.innerHTML = `<span role="status"></span>`
+		// const spinnerSpan = createElem('span', {className: "sr-only", innerHTML:`Loading...`})
+		t.append(spinnerBorder)
+		
+		
+		
+		setTimeout(function(){
+			loadConfirmationPage()
+			t.remove()
+			getTotalscolumn().append(makeCheckoutButtonRow())
+		}, 2200)
+		
+	}
+})
+
+

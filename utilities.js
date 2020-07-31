@@ -1,7 +1,7 @@
 baseUrl = 'http://localhost:3000'
 itemsUrl = baseUrl+'/items'
 cartsUrl = baseUrl+'/carts'
-currentCartUrl = cartsUrl+'/41'
+currentCartUrl = cartsUrl+'/47'
 searchUrl = baseUrl + '/search/'
 
 
@@ -38,6 +38,17 @@ const goToItemHandler = () => {
     })
 }
 
+// const deleteItemFromCartHandler = () => {
+//     document.addEventListener('click', event => {
+//         if (event.target.classList.contains("delete-cart-item")) {
+//             const cartShowCard = event.target.closest('.cart-show-card')
+//             const itemId = cartShowCard.dataset.id
+//             deleteCartItem(itemId)
+//         }
+//     })
+// }
+
+
 const deleteItemFromCartHandler = () => {
     document.addEventListener('click', event => {
         if (event.target.classList.contains("delete-cart-item")) {
@@ -47,4 +58,5 @@ const deleteItemFromCartHandler = () => {
         }
     })
 }
+
 
