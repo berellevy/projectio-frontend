@@ -1,7 +1,7 @@
 baseUrl = 'http://localhost:3000'
 itemsUrl = baseUrl+'/items'
 cartsUrl = baseUrl+'/carts'
-currentCartUrl = cartsUrl+'/47'
+currentCartUrl = cartsUrl+'/71'
 searchUrl = baseUrl + '/search/'
 
 

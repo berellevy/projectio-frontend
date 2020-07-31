@@ -4,13 +4,38 @@ const cartShow = () => {
 	fetch(currentCartUrl)
 	.then(resp => resp.json())
 	.then(data => {
-		renderCartItems(data.items)
+		if(data.items.length == 0){
+			// destroyCurrentPage()
+			displayEmptyCartMessage()
+		}else{		
+		renderCartItems(data.items);
 		renderCartTotals(data.totals);
+		}
 	})
 }
 
 	const makeCheckoutButtonRow = () => createElem("button", {textContent: "Checkout", className: "row btn btn-secondary btn-lg checkout-button"} )
 	const getCheckoutButtonRow = () => document.querySelector('checkout-button');
+
+const displayEmptyCartMessage = () => {
+	const displayCartContainer = createElem('div', {className: 'container empty-cart-container'})
+	const displayCartRow = createElem('div', {className: 'row '})
+	const displayCartColMessage = createElem('h1', {className: 'col col-sm-12', textContent:`Your cart is Empty`})
+	const buttonOuterDiv = createElem('div', {className:'text-center'})
+	const continueShoppingButton = createElem('button', {className: 'btn btn-secondary btn-lg continue-shopping-button', innerHTML: 'Continue Shopping'})
+	buttonOuterDiv.append(continueShoppingButton)
+	displayCartRow.append(displayCartColMessage, buttonOuterDiv)
+	displayCartContainer.append(displayCartRow, continueShoppingButton)
+	main().append(displayCartContainer)
+	continueShopping(continueShoppingButton)
+}
+
+const continueShopping = (button) => {
+	button.addEventListener('click', e => {
+		destroyCurrentPage()
+		loadIndexPage()
+	})
+}
 
 const totalsRow = (word, number, id, extraClass = "") => {
 	const row = createElem('div', {className: `row totals-row ${extraClass}`, id: id})
