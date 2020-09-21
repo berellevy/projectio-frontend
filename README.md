@@ -1,4 +1,4 @@
-# eCommerce Clone
+# eCommerce Clone Front End
 
 Back end is [here](https://github.com/berellevy/projectio-backend)
 
