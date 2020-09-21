@@ -1,5 +1,7 @@
 # eCommerce Clone Front End
 
+### Flatiron Mod 3 Project with [Andy Agus](https://github.com/Andyagus)
+
 Back end is [here](https://github.com/berellevy/projectio-backend)
 
 Watch a demo [here](https://youtu.be/kDDZ7Tb6lQM)
